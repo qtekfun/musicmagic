@@ -9,8 +9,9 @@ def index():
     if request.method == 'POST':
         text = request.form['text']
         # Ejecuta el script de Python con el texto como argumento
-        subprocess.run(['python', 'script.py', text])
-        return render_template('index.html', text=text)
+        result = subprocess.run(['python', 'yt-dlp', '--no-check-certificates', '-o output/%(title)s.%(ext)s', text], capture_output = True, text = True)
+        # subprocess.run(['python', 'script.py', result.stdout])
+        return render_template('index.html', text=text, response=result.stdout)
     return render_template('index.html')
 
 if __name__ == '__main__':

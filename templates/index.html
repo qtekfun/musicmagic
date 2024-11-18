@@ -11,7 +11,10 @@
     </form>
 
     {% if text %}
-        <p>Texto introducido: {{ text }}</p>
+        <p>Arguments: {{ text }}</p>
+    {% endif %}
+    {% if response %}
+        <p>Response: {{ response }}</p>
     {% endif %}
 </body>
 </html>
